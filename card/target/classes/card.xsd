@@ -1,0 +1,57 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://interfaces.soap.com"
+	targetNamespace="http://interfaces.soap.com"
+	elementFormDefault="qualified">
+
+
+	<xs:complexType name="cardInfo">
+		<xs:sequence>
+			<xs:element name="cardno" type="xs:long" />
+			<xs:element name="cardholdername" type="xs:string" />
+			<xs:element name="cardbalance" type="xs:double" />
+			<xs:element name="cardissueddate" type="xs:string" />
+			<xs:element name="cardexpirydate" type="xs:string" />
+			<xs:element name="cardstatus" type="xs:string" />
+			<xs:element name="bankid" type="xs:short" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="serviceStatus">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="addCardRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cardInfo" type="tns:cardInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addCardResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceStatus" type="tns:serviceStatus" />
+				<xs:element name="cardInfo" type="tns:cardInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getCardRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cardno" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getCardResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cardInfo" type="tns:cardInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema> 
